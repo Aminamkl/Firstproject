@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcul</title>
+</head>
+<body>
+    <table border="1" cellspacing="2">
+        <tr>
+            <td colspan="5">
+                <input type="text " id="out">
+            </td>
+        </tr>
+
+        <tr>
+            <td><button onclick="Calculer('ch',7)">7</button></td>
+            <td><button onclick="Calculer('ch',8)">8</button></td>
+            <td><button onclick="Calculer('ch',7)">7</button></td>
+        </tr>
+    </table>
+
+    <script>
+        const out = document.querySelector("out")
+        var op1= '0';
+        var operator = '+';
+        function calculer(g,v){
+            switch(g){
+                case 'ch':
+                    if(test){
+                        out.value='0'
+                        test=false;
+                    }
+                    if(out.value==0) out.value =''
+                    out.value +=v
+                    break;
+
+                case 'dec':
+                    if(out.value.indexOf('.') === -1) 
+                    out.value +='.'
+                    break;
+                
+                case 'op':
+                    op1=out.value
+                    operator =v
+                    test= true
+                    calculer('eg')
+                    break;
+
+                case 'eg':
+                    switch(operator){
+                        case '+':
+                            out.value = +op1 + +out.value
+                            break;
+
+                        case '-':
+                            out.value = op1 - out.value
+                            break;  
+                        
+                        case 'x':
+                            out.value = op1 * out.value
+                            break;
+
+                        case '/':
+                            out.value = op1 / out.value
+                            break;
+                    }
+                    break;
+                
+            }
+
+
+        }
+    </script>
+</body>
+</html>
